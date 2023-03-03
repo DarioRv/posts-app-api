@@ -26,4 +26,14 @@ public class UserService implements IUserService {
         return userRepository.findAll();
     }
     
+    @Override
+    public User login (String username, String password) {
+        User currentUser = null;
+        for (User user : usersList()) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                currentUser = user;
+            }
+        }
+        return currentUser;
+    }
 }

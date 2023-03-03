@@ -1,6 +1,7 @@
 package com.userregister.userregister.controller;
 
 import com.userregister.userregister.model.User;
+import com.userregister.userregister.model.UserLogin;
 import com.userregister.userregister.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,9 @@ public class Controller {
     @GetMapping ("/get/all-users")
     public List<User> getAllUsers () {
         return userService.usersList();
+    }
+    @PostMapping ("/login")
+    public User login(@RequestBody UserLogin user) {
+        return userService.login(user.getUsername(), user.getPassword());
     }
 }
