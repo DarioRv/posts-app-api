@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,11 +18,11 @@ public class Controller {
     public UserService userService; 
     
     @PostMapping ("/new/user")
-    public void saveUser (User user) {
+    public void saveUser (@RequestBody User user) {
         userService.saveUser(user);
     }
     @PutMapping ("/update/user")
-    public void updateUser (User user) {
+    public void updateUser (@RequestBody User user) {
         userService.saveUser(user);
     }
     @DeleteMapping ("/delete/user")
