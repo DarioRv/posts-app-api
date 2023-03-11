@@ -8,4 +8,5 @@ public interface IUserService {
     public void deleteUser (int id);
     public List<User> usersList ();
     public User login (String username, String password);
+    public User findById(int id);
 }

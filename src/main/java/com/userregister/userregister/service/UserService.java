@@ -36,4 +36,9 @@ public class UserService implements IUserService {
         }
         return currentUser;
     }
+
+    @Override
+    public User findById(int id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }
