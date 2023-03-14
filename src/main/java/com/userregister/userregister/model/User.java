@@ -29,9 +29,11 @@ public class User {
     @Column(name = "EMAIL")
     private String email;
     @OneToMany(mappedBy = "userOwner")
-    List<Post> userPosts;
+    private List<Post> userPosts;
+    @OneToMany(mappedBy = "user")
+    private List<Comment> userComments;
 
-    public User(int id, String username, String password, char sex, String dateOfBirth, String email, List<Post> userPosts) {
+    public User(int id, String username, String password, char sex, String dateOfBirth, String email, List<Post> userPosts, List<Comment> userComments) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -39,6 +41,16 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.userPosts = userPosts;
+        this.userComments = userComments;
+    }
+    
+    @JsonManagedReference(value="userComments")
+    public List<Comment> getUserComments() {
+        return userComments;
+    }
+
+    public void setUserComments(List<Comment> userComments) {
+        this.userComments = userComments;
     }
 
     public User() {
@@ -92,7 +104,7 @@ public class User {
         this.email = email;
     }
 
-    @JsonManagedReference
+    @JsonManagedReference(value="userPosts")
     public List<Post> getUserPosts() {
         return userPosts;
     }
