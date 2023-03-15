@@ -1,6 +1,7 @@
 package com.userregister.userregister.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,9 +29,9 @@ public class User {
     private String dateOfBirth;
     @Column(name = "EMAIL")
     private String email;
-    @OneToMany(mappedBy = "userOwner")
+    @OneToMany(mappedBy = "userOwner", cascade=CascadeType.REMOVE)
     private List<Post> userPosts;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade=CascadeType.REMOVE)
     private List<Comment> userComments;
 
     public User(int id, String username, String password, char sex, String dateOfBirth, String email, List<Post> userPosts, List<Comment> userComments) {
