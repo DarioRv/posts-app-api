@@ -4,11 +4,13 @@ import com.userregister.userregister.model.Comment;
 import com.userregister.userregister.model.CommentDTO;
 import com.userregister.userregister.model.Post;
 import com.userregister.userregister.model.PostDTO;
+import com.userregister.userregister.model.Report;
 import com.userregister.userregister.model.User;
 import com.userregister.userregister.model.UserLogin;
 import com.userregister.userregister.service.ICommentService;
 import com.userregister.userregister.service.IFileStorageService;
 import com.userregister.userregister.service.IPostService;
+import com.userregister.userregister.service.IReportService;
 import com.userregister.userregister.service.IUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -44,6 +46,8 @@ public class Controller {
     @Autowired 
     public IFileStorageService fileStorageService;
     public HttpServletRequest request;
+    @Autowired
+    public IReportService reportService;
     
     @PostMapping ("/new/user")
     public void saveUser (@RequestBody User user) {
@@ -182,5 +186,17 @@ public class Controller {
         String contentType = Files.probeContentType(file.getFile().toPath());
         
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType).body(file);
+    }
+    @PostMapping("/save/report")
+    public void saveReport (@RequestBody Report report) {
+        reportService.saveReport(report);
+    }
+    @GetMapping("/get/all-reports")
+    public List<Report> getAllReports (){
+        return reportService.getReports();
+    }
+    @DeleteMapping("/delete/report")
+    public void deleteReport (@RequestParam int id) {
+        reportService.deleteReport(id);
     }
 }
