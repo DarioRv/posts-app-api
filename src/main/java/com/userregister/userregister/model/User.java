@@ -19,15 +19,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private int id;
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME", nullable = false)
     private String username;
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
-    @Column(name = "SEX")
+    @Column(name = "SEX", nullable = false)
     private char sex;
-    @Column(name = "DATE_OF_BIRTH")
+    @Column(name = "DATE_OF_BIRTH", nullable = false)
     private String dateOfBirth;
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", nullable = false)
     private String email;
     @OneToMany(mappedBy = "userOwner", cascade=CascadeType.REMOVE)
     private List<Post> userPosts;

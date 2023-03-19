@@ -1,6 +1,7 @@
 package com.userregister.userregister.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,15 @@ import jakarta.persistence.Table;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private int id;
+    @Column(name = "text", nullable = false)
     private String text;
     @ManyToOne
-    @JoinColumn (name = "ID_POST_FK")
+    @JoinColumn (name = "ID_POST_FK", nullable = false)
     private Post post;
     @ManyToOne
-    @JoinColumn (name = "ID_USER_FK")
+    @JoinColumn (name = "ID_USER_FK", nullable = false)
     private User user;
 
     public Comment(int id, String text, Post post, User user) {

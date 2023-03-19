@@ -21,13 +21,13 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private int id;
-    @Column(name = "TITLE")
+    @Column(name = "TITLE", nullable = false)
     private String title;
-    @Column(name = "BODY")
+    @Column(name = "BODY", nullable = false)
     private String body;
-    @Column(name = "IMAGE")
+    @Column(name = "IMAGE", nullable = true)
     private String image;
-    @Column(name = "DATE")
+    @Column(name = "DATE", nullable = false)
     private String date;
     @ManyToOne
     @JoinColumn(name = "ID_USER_FK")
