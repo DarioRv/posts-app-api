@@ -40,7 +40,7 @@ spring.servlet.multipart.max-file-size=5MB
 spring.servlet.multipart.max-request-size=10MB
 media.location=mediafiles
 ```
-Las tablas de la base de datos se crea automáticamente al ejecutar el proyecto
+Las tablas de la base de datos se crea automáticamente al ejecutar el proyecto. <br>
 3. Compilar y empaquetar el proyecto
 ```
 mvn clean package
