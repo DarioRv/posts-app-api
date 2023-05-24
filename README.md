@@ -196,5 +196,5 @@ GET /get/all-reports
 ```
 DELETE /delete/report?id={id}
 ```
-### Última actualización
+## Última actualización
 Mayo 2023
